@@ -76,4 +76,21 @@ class AuthorController extends Controller
         ];
         return view('author.binds', $data);
     }
+
+    public function get()
+    {
+        $text = [
+            'content' => '自由に入力してください',
+        ];
+        return view('middleware', $text);
+    }
+
+    public function post(Request $request)
+    {
+        $content = $request->content;
+        $text = [
+            'content' => $content . 'と入力してしまいましたね'
+        ];
+        return view('middleware', $text);
+    }
 }
