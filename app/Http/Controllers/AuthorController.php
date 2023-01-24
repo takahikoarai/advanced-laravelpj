@@ -8,10 +8,11 @@ use App\Http\Requests\AuthorRequest;
 
 class AuthorController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $books = Book::with('author')->get();
-        return view('book.index', ['books' => $books]);
+        // $authors = Author::simplePaginate(4);
+        $authors = Author::Paginate(4);
+        return view('index', ['authors' => $authors]);
     }
     //
     public function find()

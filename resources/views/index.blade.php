@@ -15,16 +15,18 @@
     background-color:#EEEEEE;
     text-align:center;
   }
+
+  svg.w-5.h-5{
+    width:30px;
+    height:30px;
+  }
 </style>
 @section('title','index.blade.php')
 
 @section('content')
 <table>
   <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>age</th>
-    <th>nationality</th>
+    <th>Data</th>
   </tr>
   @foreach($authors as $author)
   <tr>
@@ -32,4 +34,5 @@
   </tr>
   @endforeach
 </table>
+{{ $authors->links() }}
 @endsection
