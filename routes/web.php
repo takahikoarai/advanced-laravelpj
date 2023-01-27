@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
+use App\Models\Person;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,25 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('softdelete', function(){
+    $result = Person::find(1)->delete();
+    if($result){
+        return "論理削除されました";
+    }
+});
+
+Route::get('/softdelete/get', function(){
+    $person = Person::onlyTrashed()->get();
+    return $person;
+});
+
+Route::get('/softdelete/store', function(){
+    $result = Person::onlyTrashed()->restore();
+    return $result;
+});
+
+Route::get('/softdelete/absolute', function(){
+    $result = Person::onlyTrashed()->forceDelete();
+    return $result;
+});
