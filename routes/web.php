@@ -7,6 +7,7 @@ use App\Http\Controllers\SessionController;
 use App\Models\Person;
 use App\Models\Product;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\TimeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,3 +89,6 @@ Route::get('uuid', function(){
 Route::get('fill', [SchoolController::class, 'fillSchool']);
 Route::get('create', [SchoolController::class, 'createSchool']);
 Route::get('insert', [SchoolController::class, 'insertSchool']);
+
+//TimeController
+Route::get('/time', [TimeController::class, 'index']);
